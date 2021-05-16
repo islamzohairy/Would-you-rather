@@ -1,13 +1,17 @@
-import { updateQuestions, setQuestions } from "./questions";
-import { updateUsers, setUsers } from "./users";
+import {
+  updateQuestionsAfterAnswer,
+  setQuestions,
+  addQuestion,
+} from "./questions";
+import { updateUsersAfterAnswer, setUsers, updateUsersAfterAdd } from "./users";
 import { _saveQuestionAnswer } from "../service/_DATA";
 
 // ANSWER handler
 export const handleAnswer = (req, prevUsers, prevQuestions) => {
   const { authedUser, qid, answer } = req;
   return (dispatch) => {
-    dispatch(updateQuestions(authedUser, qid, answer));
-    dispatch(updateUsers(authedUser, qid, answer));
+    dispatch(updateUsersAfterAnswer(authedUser, qid, answer));
+    dispatch(updateQuestionsAfterAnswer(authedUser, qid, answer));
 
     _saveQuestionAnswer(req)
       .then(() => {
@@ -26,5 +30,17 @@ export const handleAnswer = (req, prevUsers, prevQuestions) => {
           status: "fail",
         };
       });
+  };
+};
+
+// ADD handler
+export const addQuestionHandler = (question) => {
+  return (dispatch) => {
+    _saveQuestion(question)
+      .then((res) => {
+        dispatch(addQuestion(res));
+        dispatch(updateUsersAfterAdd(res, question.author));
+      })
+      .catch((e) => console.error(e));
   };
 };

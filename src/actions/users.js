@@ -1,7 +1,8 @@
 import { _getUsers } from "../service/_DATA";
 
 export const SET_USERS = "SET_USERS";
-export const UPDATE_USERS = "UPDATE_USERS";
+export const UPDATE_USERS_AFTER_ADD = "UPDATE_USERS_AFTER_ADD";
+export const UPDATE_USERS_AFTER_ANSWER = "UPDATE_USERS_AFTER_ANSWER";
 
 const setUsers = (users) => {
   return {
@@ -21,14 +22,25 @@ export const getUsers = () => {
   };
 };
 
-// UPDATE user
-export const updateUsers = (authedUser, qid, answer) => {
+// UPDATE users after ANSWER a question
+export const updateUsersAfterAnswer = (authedUser, qid, answer) => {
   return {
-    type: UPDATE_USERS,
+    type: UPDATE_USERS_AFTER_ANSWER,
     payload: {
       authedUser,
       qid,
       answer,
+    },
+  };
+};
+
+// UPDATE users after ADD a question
+export const updateUsersAfterAdd = (question, authedUser) => {
+  return {
+    type: UPDATE_USERS_AFTER_ADD,
+    payload: {
+      question,
+      authedUser,
     },
   };
 };
