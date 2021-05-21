@@ -1,0 +1,81 @@
+.login {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.login-header {
+  width: 100%;
+  justify-content: center;
+  text-align: center;
+  background-color: $header-color;
+  margin: 0;
+  font-size: 84px;
+  font-family: game-font;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  color: $light-color;
+}
+
+h1 {
+  font-size: 4em;
+  margin: auto;
+  margin-top: 25px;
+  margin-bottom: 40px;
+  font-weight: 300;
+}
+
+.login-container {
+  padding: 40px;
+  background-color: $light-color;
+  width: 40vw;
+  height: 48vh;
+  margin: auto;
+  margin-top: 0;
+  justify-content: center;
+  scroll-behavior: smooth;
+
+  .user {
+    display: flex;
+    width: 80%;
+    padding-left: 40px;
+    // margin-left: 0.69vw;
+    // margin-bottom: 0.97vh;
+    height: 15.4vh;
+
+    img {
+      margin: auto;
+      margin-left: 0;
+      margin-right: 0;
+      border-radius: 100%;
+      width: 9vh;
+      height: 9vh;
+    }
+    .user-name {
+      text-align: left;
+      margin: auto;
+      margin-left: 10px;
+    }
+  }
+
+  .login-user {
+    margin: auto;
+
+    // padding-right: 10px;
+    // padding-left: 10px;
+    display: flex;
+    width: 100%;
+    cursor: pointer;
+    &:hover {
+      border: 4px $dark-color solid;
+    }
+  }
+
+  .login-link {
+    margin: auto;
+    margin-right: 40px;
+    font-family: game-font;
+    color: $dark-color;
+  }
+}

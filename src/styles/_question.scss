@@ -1,0 +1,142 @@
+.question {
+  height: 75vh;
+  width: 100%;
+
+  .poll {
+    display: flex;
+    height: 90%;
+    width: 80%;
+    margin: auto;
+    margin-top: 8vh;
+    background-color: $light-color;
+
+    h3 {
+      font-family: game-font;
+      color: $dark-color;
+      font-size: 2.6em;
+    }
+
+    .poll-user {
+      margin: auto;
+      text-align: center;
+      flex: 38%;
+
+      p {
+        font-size: 2.6em;
+      }
+
+      img {
+        border-radius: 100%;
+        border: 2px solid $dark-color;
+        width: 14.4em;
+        height: 14.4em;
+      }
+    }
+
+    .poll-body {
+      margin: auto;
+      text-align: center;
+      flex: 62%;
+      border-left: solid 1px $dark-color;
+
+      .labels {
+        border: 1px solid $dark-color;
+        background-color: #ffffff;
+        margin-left: 18.5%;
+        margin-right: 18.5%;
+        padding-top: 1%;
+        margin-bottom: 3%;
+        // padding-bottom: 1%;
+      }
+
+      .poll-body-labels {
+        font-size: 1.4em;
+        background-color: #ffffff;
+        // margin-left: 5.5em;
+        // margin-right: 5.5em;
+        margin-bottom: 1em;
+        text-align: left;
+
+        padding: 5px;
+      }
+
+      .poll-result {
+        // background-color: #ffffff;
+        margin-left: 18.5%;
+        margin-right: 18.5%;
+        padding-top: 1%;
+
+        margin-bottom: 3%;
+
+        .poll-result-label {
+          margin-bottom: 5px !important;
+          font-weight: 500;
+        }
+
+        .authed-vote-avatar {
+          width: 1.5em;
+          height: 1.5em;
+          border-radius: 100%;
+          //   border: 1px $dark-color solid;
+          margin: 5px;
+          margin-left: auto;
+          padding: 0;
+        }
+      }
+
+      .poll-body-result {
+        font-size: 1.4em;
+        background-color: #ffffff;
+        margin-bottom: 1em;
+        text-align: left;
+
+        padding: 3%;
+        border: $dark-color solid 1px;
+        border-right: $dark-color solid 4px;
+      }
+
+      .percetage-container {
+        width: 100%;
+        position: relative;
+        .out-of {
+          width: fit-content;
+          font-size: 0.7em;
+          margin-left: auto;
+        }
+        p {
+          margin: 0;
+          padding: 5px;
+        }
+      }
+
+      input[type="radio" i] {
+        display: inline-block;
+        -ms-transform: scale(1.5); /* IE 9 */
+        -webkit-transform: scale(1.5); /* Chrome, Safari, Opera */
+        transform: scale(1.5);
+        margin: 20px;
+
+        &:checked {
+          background-color: black;
+        }
+      }
+
+      input[type="submit" i] {
+        padding-left: 28%;
+        padding-right: 28%;
+        padding-top: 1%;
+        padding-bottom: 1%;
+        background-color: $dark-color;
+        cursor: pointer;
+        border: none;
+        color: #ffffff;
+        font-size: 1.4em;
+      }
+
+      .radio-btn {
+        background-color: $dark-color;
+        color: black;
+      }
+    }
+  }
+}

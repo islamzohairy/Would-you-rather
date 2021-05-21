@@ -4,14 +4,16 @@ import {
   addQuestion,
 } from "./questions";
 import { updateUsersAfterAnswer, setUsers, updateUsersAfterAdd } from "./users";
-import { _saveQuestionAnswer } from "../service/_DATA";
+import { _saveQuestionAnswer, _saveQuestion } from "../service/_DATA";
+import { updateAuthedUserAnswers, setAuthedUser } from "./authedUser";
 
 // ANSWER handler
-export const handleAnswer = (req, prevUsers, prevQuestions) => {
+export const handleAnswer = (req, prevState) => {
   const { authedUser, qid, answer } = req;
   return (dispatch) => {
     dispatch(updateUsersAfterAnswer(authedUser, qid, answer));
     dispatch(updateQuestionsAfterAnswer(authedUser, qid, answer));
+    dispatch(updateAuthedUserAnswers(qid, answer));
 
     _saveQuestionAnswer(req)
       .then(() => {
@@ -22,8 +24,9 @@ export const handleAnswer = (req, prevUsers, prevQuestions) => {
       })
       .catch((e) => {
         console.log(e);
-        dispatch(setUsers(prevUsers));
-        dispatch(setQuestions(prevQuestions));
+        dispatch(setUsers(prevState.users));
+        dispatch(setQuestions(prevState.questions));
+        dispatch(setAuthedUser(prevState.authedUser));
 
         return {
           msg: "Your vote was not submitted!, Plsease try again!",

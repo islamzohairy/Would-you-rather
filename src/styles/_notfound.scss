@@ -1,0 +1,13 @@
+.not-found {
+  width: 70vw;
+  //   height: 70vh;
+  margin: auto;
+  background-color: $light-color;
+  p {
+    height: fit-content;
+    text-align: center;
+    color: $dark-color;
+    font-family: game-font;
+    font-size: 3em !important;
+  }
+}

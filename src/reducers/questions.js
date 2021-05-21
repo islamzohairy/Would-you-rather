@@ -13,14 +13,14 @@ export default function questions(state = {}, action) {
 
     case UPDATE_QUESTIONS_AFTER_ANSWER: {
       const { authedUser, qid, answer } = action.payload;
-      const { questions } = state;
+
       const newState = {
-        ...questions,
+        ...state,
         [qid]: {
-          ...questions[qid],
+          ...state[qid],
           [answer]: {
-            ...questions[qid][answer],
-            votes: questions[qid][answer].votes.concat([authedUser]),
+            ...state[qid][answer],
+            votes: state[qid][answer].votes.concat([authedUser]),
           },
         },
       };
@@ -30,9 +30,9 @@ export default function questions(state = {}, action) {
 
     case ADD_QUESTION: {
       const { question } = action.payload;
-      const { questions } = state;
+
       const newState = {
-        ...questions,
+        ...state,
         [question.id]: question,
       };
 

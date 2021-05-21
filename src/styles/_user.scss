@@ -1,0 +1,22 @@
+.user {
+  display: flex;
+  width: 80%;
+  padding-left: 40px;
+  // margin-left: 0.69vw;
+  // margin-bottom: 0.97vh;
+  height: 15.4vh;
+
+  img {
+    margin: auto;
+    margin-left: 0;
+    margin-right: 0;
+    border-radius: 100%;
+    width: 9vh;
+    height: 9vh;
+  }
+  .user-name {
+    text-align: left;
+    margin: auto;
+    margin-left: 10px;
+  }
+}

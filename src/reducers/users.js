@@ -13,13 +13,13 @@ export default function users(state = {}, action) {
 
     case UPDATE_USERS_AFTER_ANSWER: {
       const { authedUser, qid, answer } = action.payload;
-      const { users } = state;
+      console.log(authedUser, qid, answer);
       const newState = {
-        ...users,
+        ...state,
         [authedUser]: {
-          ...users[authedUser],
+          ...state[authedUser],
           answers: {
-            ...users[authedUser].answers,
+            ...state[authedUser].answers,
             [qid]: answer,
           },
         },
@@ -30,12 +30,12 @@ export default function users(state = {}, action) {
 
     case UPDATE_USERS_AFTER_ADD: {
       const { authedUser, question } = action.payload;
-      const { users } = state;
+
       const newState = {
-        ...users,
+        ...state,
         [authedUser]: {
-          ...users[authedUser],
-          questions: users[authedUser].questions.concat([question.id]),
+          ...state[authedUser],
+          questions: state[authedUser].questions.concat([question.id]),
         },
       };
 

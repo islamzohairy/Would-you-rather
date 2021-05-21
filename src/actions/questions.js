@@ -1,14 +1,10 @@
-import {
-  _getQuestions,
-  _saveQuestionAnswer,
-  _saveQuestion,
-} from "../service/_DATA";
+import { _getQuestions } from "../service/_DATA";
 
 export const SET_QUESTIONS = "SET_QUESTIONS";
 export const UPDATE_QUESTIONS_AFTER_ANSWER = "UPDATE_QUESTIONS_AFTER_ANSWER";
 export const ADD_QUESTION = "ADD_QUESTION";
 
-const setQuestions = (questions) => {
+export const setQuestions = (questions) => {
   return {
     type: SET_QUESTIONS,
     questions,
@@ -20,6 +16,7 @@ export const getQuestions = () => {
   return (dispatch) => {
     return _getQuestions()
       .then((res) => {
+        // const sortedRes = sortQuestions(res);
         dispatch(setQuestions(res));
       })
       .catch((e) => console.error(e));

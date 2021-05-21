@@ -4,7 +4,7 @@ export const SET_USERS = "SET_USERS";
 export const UPDATE_USERS_AFTER_ADD = "UPDATE_USERS_AFTER_ADD";
 export const UPDATE_USERS_AFTER_ANSWER = "UPDATE_USERS_AFTER_ANSWER";
 
-const setUsers = (users) => {
+export const setUsers = (users) => {
   return {
     type: SET_USERS,
     users,
@@ -14,7 +14,7 @@ const setUsers = (users) => {
 // GET users
 export const getUsers = () => {
   return (dispatch) => {
-    return _getUsers()
+    _getUsers()
       .then((res) => {
         dispatch(setUsers(res));
       })
