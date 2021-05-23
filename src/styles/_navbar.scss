@@ -1,0 +1,110 @@
+.nav {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 15%;
+  background-color: $header-color;
+  z-index: 3;
+
+  .link {
+    padding: 5px;
+    text-decoration: none;
+    margin: auto;
+    font-size: 10px;
+    font-family: game-font;
+    width: fit-content;
+    text-align: center;
+    color: $dark-color !important;
+    cursor: pointer;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-tap-highlight-color: transparent;
+  }
+  .link-active {
+    padding: 5px;
+    text-decoration: none;
+    margin: auto;
+    font-size: 10px;
+    font-family: game-font;
+    width: fit-content;
+    text-align: center;
+    color: $dark-color !important;
+    cursor: pointer;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-tap-highlight-color: transparent;
+    border-bottom: 1px dashed $dark-color;
+  }
+
+  // bars
+  .nav-left-element {
+    margin: auto;
+    margin-left: 20px;
+    width: fit-content;
+    height: fit-content;
+    flex: 20%;
+
+    .bars {
+      margin: auto;
+      width: 2em;
+      cursor: pointer;
+    }
+  }
+
+  // user
+  .nav-right {
+    width: fit-content;
+    height: fit-content;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+
+    .nav-right-element,
+    .nav-right-user-name {
+      text-align: center;
+      margin: auto;
+      margin-right: 20px;
+      font-family: game-font;
+      font-size: 10px;
+      color: $light-color;
+    }
+
+    .nav-right-user-name {
+      text-align: right;
+    }
+
+    img {
+      padding-top: 10px;
+      padding-bottom: 10px;
+      width: 50px;
+      height: 50px;
+      border-radius: 100%;
+    }
+
+    .log-out {
+      cursor: pointer !important;
+      font-size: 6px !important;
+    }
+  }
+
+  // menu
+  .nav-menu {
+    position: absolute;
+    top: 70px;
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    min-width: 100%;
+    z-index: 2;
+    opacity: 0.99;
+    text-align: center;
+    // padding-bottom: 30px;
+    // border-bottom: 2px $header-color solid;
+    border-top: 2px $dark-color solid;
+    scroll-behavior: smooth;
+    transition: 0.3s ease-in-out;
+    min-height: 88%;
+    .nav-menu-element {
+      justify-content: center;
+      margin-top: 30px;
+    }
+  }
+}

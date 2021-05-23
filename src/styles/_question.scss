@@ -4,7 +4,8 @@
 
   .poll {
     display: flex;
-    height: 90%;
+    padding-bottom: 50px;
+    // height: 98%;
     width: 80%;
     margin: auto;
     margin-top: 8vh;
@@ -17,9 +18,10 @@
     }
 
     .poll-user {
+      padding: 100px;
       margin: auto;
       text-align: center;
-      flex: 38%;
+      // flex: 14%;
 
       p {
         font-size: 2.6em;
@@ -27,16 +29,17 @@
 
       img {
         border-radius: 100%;
-        border: 2px solid $dark-color;
+
         width: 14.4em;
         height: 14.4em;
       }
     }
 
     .poll-body {
+      flex: 1;
       margin: auto;
       text-align: center;
-      flex: 62%;
+      // flex: 62%;
       border-left: solid 1px $dark-color;
 
       .labels {
@@ -87,10 +90,11 @@
       .poll-body-result {
         font-size: 1.4em;
         background-color: #ffffff;
-        margin-bottom: 1em;
+        margin-top: 1em;
         text-align: left;
-
-        padding: 3%;
+        padding-top: 1px;
+        padding-left: 5px;
+        padding-right: 5px;
         border: $dark-color solid 1px;
         border-right: $dark-color solid 4px;
       }
@@ -136,6 +140,84 @@
       .radio-btn {
         background-color: $dark-color;
         color: black;
+      }
+    }
+  }
+}
+
+@media (max-width: 1312px) {
+  .question {
+    // height: max-content;
+    // margin: auto;
+    padding-bottom: 40px !important;
+  }
+  .poll {
+    // height: 99.5% !important;
+    flex-direction: column;
+    display: inline-block;
+    .poll-user {
+      height: fit-content;
+      margin: auto;
+      //
+      padding: 20px !important;
+
+      p {
+        font-size: 20px !important;
+      }
+
+      img {
+        height: 60px !important;
+        width: 60px !important;
+      }
+    }
+
+    .poll-body {
+      padding: 0;
+      padding-top: 10px;
+      border-left: none !important;
+      // border-top: 1px solid $dark-color;
+      margin: auto;
+      margin-right: 10% !important;
+      margin-left: 10% !important;
+      // height: fit-content;
+
+      h3 {
+        font-size: 14px;
+      }
+
+      .labels {
+        margin-left: 0% !important;
+        margin-right: 0% !important;
+        padding-top: 1%;
+        margin-bottom: 3%;
+        // padding-bottom: 1%;
+
+        .poll-body-labels {
+          font-size: 14px;
+        }
+      }
+      input[type="submit" i] {
+        margin-top: 10px;
+        width: 100%;
+        padding-left: 30%;
+        padding-right: 30%;
+        font-size: 14px !important;
+      }
+    }
+
+    .poll-result {
+      margin: 0px !important;
+
+      .poll-body-result {
+        .percetage-container {
+          .out-of {
+            font-size: 10px;
+          }
+        }
+      }
+
+      .poll-result-label {
+        font-size: 14px;
       }
     }
   }

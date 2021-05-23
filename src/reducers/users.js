@@ -13,7 +13,6 @@ export default function users(state = {}, action) {
 
     case UPDATE_USERS_AFTER_ANSWER: {
       const { authedUser, qid, answer } = action.payload;
-      console.log(authedUser, qid, answer);
       const newState = {
         ...state,
         [authedUser]: {

@@ -13,7 +13,7 @@ function RankedUser({
 
   useEffect(() => {
     if (authed) {
-      setState("4px solid #a1b3b0");
+      setState("5px dashed #a1b3b0");
     } else {
       setState("1px solid #a1b3b0");
     }

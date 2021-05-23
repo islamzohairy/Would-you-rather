@@ -75,3 +75,33 @@
     }
   }
 }
+
+@media (max-width: 1312px) {
+  .new-question {
+    h1 {
+      font-size: 30px;
+      margin: auto;
+      margin-bottom: 25px;
+      margin-top: 25px;
+      font-weight: 300;
+    }
+  }
+
+  .add {
+    width: 90%;
+    padding: 0px;
+
+    h2 {
+      font-size: 16px;
+      margin: 20px;
+    }
+
+    h3 {
+      font-size: 14px;
+    }
+
+    p {
+      font-size: 9px;
+    }
+  }
+}

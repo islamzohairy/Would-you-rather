@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addQuestionHandler } from "../actions/shared";
+import { useHistory } from "react-router-dom";
 
 function NewQuestion() {
   const dispatch = useDispatch();
@@ -8,8 +9,9 @@ function NewQuestion() {
   const [optionTwoText, setOptionTwo] = useState("");
   const [msg, setMsg] = useState("");
   const author = useSelector((state) => state.authedUser.id);
+  const history = useHistory();
 
-  const submitHandler = (event) => {
+  const submitHandler = async (event) => {
     event.preventDefault();
 
     const question = {
@@ -26,6 +28,7 @@ function NewQuestion() {
       setOptionOne("");
       setOptionTwo("");
       setMsg("Submit another question ✔️");
+      history.push("/");
     } else {
       if (!passA) {
         setOptionOne("");

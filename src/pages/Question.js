@@ -41,9 +41,9 @@ function Question() {
 
     if (answered) {
       if (answer === "optionOne") {
-        optionOne.current.style.border = "4px #a1b3b0 solid";
+        optionOne.current.style.border = "4px #a1b3b0 dashed";
       } else {
-        optionTwo.current.style.border = "4px #a1b3b0 solid";
+        optionTwo.current.style.border = "4px #a1b3b0 dashed";
       }
     }
   }, [answer, answered, question]);
@@ -52,23 +52,17 @@ function Question() {
     return <NotFound />;
   }
 
-  // const optionOnePercentage =
-  //   (question.optionOne.votes.length * 100) /
-  //   (question.optionOne.votes.length + question.optionTwo.votes.length);
-
-  // const optionTwoPercentage =
-  //   (question.optionTwo.votes.length * 100) /
-  //   (question.optionOne.votes.length + question.optionTwo.votes.length);
-
   const submitHandler = (event) => {
     event.preventDefault();
 
-    const req = {};
-    req.authedUser = userID;
-    req.qid = id;
-    req.answer = value;
-    dispatch(handleAnswer(req, state));
-    setAnswered(true);
+    if (value) {
+      const req = {};
+      req.authedUser = userID;
+      req.qid = id;
+      req.answer = value;
+      dispatch(handleAnswer(req, state));
+      setAnswered(true);
+    }
   };
 
   return (
