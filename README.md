@@ -95,3 +95,7 @@ Reducers and actions are written properly and correctly return updated state to 
 
 The code is structured and organized in a logical way.
 Components are modular and reusable.
+
+## Deploy
+
+https://would-you-rather-polls.herokuapp.com/

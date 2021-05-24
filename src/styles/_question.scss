@@ -1,5 +1,5 @@
 .question {
-  min-height: calc(100vh - 180px);
+  // height: 75vh;
   width: 100%;
 
   .poll {
@@ -41,6 +41,7 @@
       text-align: center;
       // flex: 62%;
       border-left: solid 1px $dark-color;
+      overflow: hidden;
 
       .labels {
         border: 1px solid $dark-color;
@@ -59,7 +60,7 @@
         // margin-right: 5.5em;
         margin-bottom: 1em;
         text-align: left;
-
+        overflow: hidden;
         padding: 5px;
       }
 
@@ -74,6 +75,7 @@
         .poll-result-label {
           margin-bottom: 5px !important;
           font-weight: 500;
+          overflow: hidden;
         }
 
         .authed-vote-avatar {
@@ -128,8 +130,8 @@
       input[type="submit" i] {
         padding-left: 28%;
         padding-right: 28%;
-        padding-top: 1%;
-        padding-bottom: 1%;
+        padding-top: 2%;
+        padding-bottom: 2%;
         background-color: $dark-color;
         cursor: pointer;
         border: none;

@@ -71,13 +71,20 @@
     }
 
     .home-question-options {
+      display: flex;
+      flex-direction: column;
       margin: 20px;
       flex: 70%;
       border-left: 1px solid #a1b3b079;
+      overflow: hidden;
 
       h3 {
         font-family: game-font;
         color: $dark-color;
+      }
+
+      p {
+        overflow: hidden !important;
       }
 
       .home-question-link {
@@ -143,6 +150,7 @@
       }
 
       .home-question-options {
+        // max-width: 90%;
         border-left: none;
         border-top: 1px solid #a1b3b03d;
         padding-top: 20px;

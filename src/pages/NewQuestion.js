@@ -48,6 +48,7 @@ function NewQuestion() {
         <div className="add-container">
           <form onSubmit={(event) => submitHandler(event)} className="add-form">
             <input
+              maxLength="52"
               required
               onChange={(event) => setOptionOne(event.target.value)}
               type="text"
@@ -56,6 +57,7 @@ function NewQuestion() {
             />
             <h3>or</h3>
             <input
+              maxLength="52"
               required
               onChange={(event) => setOptionTwo(event.target.value)}
               type="text"
