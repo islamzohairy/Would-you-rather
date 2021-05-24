@@ -8,8 +8,8 @@ function Leaderboard() {
   const [sortedUsers, setSortedUsers] = useState([]);
 
   useEffect(() => {
-    const func = async () => {
-      const arr = await Object.values(users)
+    const func = () => {
+      const arr = Object.values(users)
         .map((user) => {
           return {
             id: user.id,
@@ -34,18 +34,19 @@ function Leaderboard() {
   return (
     <div className="leaderboard">
       <h1>Leaderboard</h1>
-      {sortedUsers.map((user, index) => (
-        <RankedUser
-          key={"leaderboard" + user.id}
-          rank={index}
-          name={user.name}
-          avatarURL={user.avatarURL}
-          answered={user.answered}
-          asked={user.asked}
-          points={user.points}
-          authed={user.authed}
-        />
-      ))}
+      {sortedUsers &&
+        sortedUsers.map((user, index) => (
+          <RankedUser
+            key={"leaderboard" + user.id}
+            rank={index}
+            name={user.name}
+            avatarURL={user.avatarURL}
+            answered={user.answered}
+            asked={user.asked}
+            points={user.points}
+            authed={user.authed}
+          />
+        ))}
     </div>
   );
 }

@@ -5,20 +5,22 @@ import { handleAnswer } from "../actions/shared";
 import NotFound from "./NotFound";
 
 function Question() {
+  const state = useSelector((state) => state);
+  const authedUser = state.authedUser;
+  const users = state.users;
+  const questions = state.questions;
+
+  const id = useParams().question_id;
+  const question = questions[id]; //
+
   const dispatch = useDispatch();
   const optionOne = useRef("optionOne");
   const optionTwo = useRef("optionTwo");
-  const id = useParams().question_id;
 
-  const state = useSelector((state) => state);
-  const question = state.questions[id];
-
-  const users = state.users;
-
-  const userAnswers = state.authedUser.answers;
-  const userID = state.authedUser.id;
-  const answer = state.authedUser.answers[id];
-  const authedAvatar = state.authedUser.avatarURL;
+  const userAnswers = authedUser.answers; //
+  const userID = authedUser.id; //
+  const answer = authedUser.answers[id]; //
+  const authedAvatar = authedUser.avatarURL; //
 
   const isAnswerd = Object.keys(userAnswers).includes(id);
 
@@ -40,17 +42,13 @@ function Question() {
     }
 
     if (answered) {
-      if (answer === "optionOne") {
+      if (answer === "optionOne" && optionOne.current.style) {
         optionOne.current.style.border = "4px #a1b3b0 dashed";
-      } else {
+      } else if (answer === "optionTwo" && optionTwo.current.style) {
         optionTwo.current.style.border = "4px #a1b3b0 dashed";
       }
     }
   }, [answer, answered, question]);
-
-  if (!question) {
-    return <NotFound />;
-  }
 
   const submitHandler = (event) => {
     event.preventDefault();
@@ -64,6 +62,10 @@ function Question() {
       setAnswered(true);
     }
   };
+
+  if (!questions[id]) {
+    return <NotFound />;
+  }
 
   return (
     <div className="question">

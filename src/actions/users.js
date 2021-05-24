@@ -1,4 +1,5 @@
 import { _getUsers } from "../service/_DATA";
+import { updateLoading } from "./loading";
 
 export const SET_USERS = "SET_USERS";
 export const UPDATE_USERS_AFTER_ADD = "UPDATE_USERS_AFTER_ADD";
@@ -13,10 +14,11 @@ export const setUsers = (users) => {
 
 // GET users
 export const getUsers = () => {
-  return (dispatch) => {
-    _getUsers()
-      .then((res) => {
-        dispatch(setUsers(res));
+  return async (dispatch) => {
+    await _getUsers()
+      .then(async (res) => {
+        await dispatch(setUsers(res));
+        await dispatch(updateLoading());
       })
       .catch((e) => console.error(e));
   };

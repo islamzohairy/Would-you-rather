@@ -3,11 +3,22 @@
   //   height: 70vh;
   margin: auto;
   background-color: $light-color;
+
   p {
     height: fit-content;
     text-align: center;
     color: $dark-color;
     font-family: game-font;
     font-size: 3em !important;
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+}
+
+@media (max-width: 1312px) {
+  .not-found {
+    p {
+      font-size: 16px !important;
+    }
   }
 }

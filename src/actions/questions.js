@@ -1,4 +1,5 @@
 import { _getQuestions } from "../service/_DATA";
+import { updateLoading } from "./loading";
 
 export const SET_QUESTIONS = "SET_QUESTIONS";
 export const UPDATE_QUESTIONS_AFTER_ANSWER = "UPDATE_QUESTIONS_AFTER_ANSWER";
@@ -13,11 +14,11 @@ export const setQuestions = (questions) => {
 
 // GET question
 export const getQuestions = () => {
-  return (dispatch) => {
-    return _getQuestions()
-      .then((res) => {
-        // const sortedRes = sortQuestions(res);
-        dispatch(setQuestions(res));
+  return async (dispatch) => {
+    await _getQuestions()
+      .then(async (res) => {
+        await dispatch(setQuestions(res));
+        await dispatch(updateLoading());
       })
       .catch((e) => console.error(e));
   };
