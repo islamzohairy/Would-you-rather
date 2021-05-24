@@ -15,6 +15,7 @@ import NewQuestion from "./pages/NewQuestion";
 import Loadingbar from "./components/Loadingbar";
 import { Fragment } from "react";
 import { startLoading, endLoading } from "./actions/loading";
+import Footer from "./components/Footer";
 
 function App() {
   const dispatch = useDispatch();
@@ -82,6 +83,8 @@ function App() {
           </Switch>
         </Fragment>
       )}
+
+      <Footer />
     </div>
   );
 }

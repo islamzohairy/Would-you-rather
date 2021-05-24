@@ -44,7 +44,7 @@ function NewQuestion() {
     <div className="new-question">
       <h1>Create a new question</h1>
       <div className="add">
-        <h2>Would you rather</h2>
+        <h2>Would You Rather</h2>
         <div className="add-container">
           <form onSubmit={(event) => submitHandler(event)} className="add-form">
             <input

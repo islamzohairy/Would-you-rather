@@ -16,7 +16,7 @@ function Loadingbar() {
   }, [progress]);
 
   return (
-    <div style={{ marginTop: "10px", width: `100%`, height }}>
+    <div style={{ marginTop: "10px", width: `100%`, minHeight: "100vh" }}>
       <div
         ref={progRef}
         style={{

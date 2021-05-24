@@ -1,100 +1,97 @@
 # Would You Rather Project
 
-This is the starter code for the final assessment project for Udacity's React & Redux course.
+React-Redux app created by create-react-app that allow the user to login and logout, go through users' polls, answer them, create new polls and check the leaderboard.
 
-The `_DATA.js` file represents a fake database and methods that let you access the data. The only thing you need to edit in the ` _DATA.js` file is the value of `avatarURL`. Each user should have an avatar, so you’ll need to add the path to each user’s avatar.
+## Application Setup
 
-Using the provided starter code, you'll build a React/Redux front end for the application. We recommend using the [Create React App](https://github.com/facebook/create-react-app) to bootstrap the project.
+Requires only npm install and npm start to get it installed and launched.
 
-## Data
+## Login Flow
 
-There are two types of objects stored in our database:
+The user logs in as an existing user.
+The application works correctly regardless of which user is selected.
+The application allows the user to log out and log back in. The user should be logged in to submit new polling questions, vote, and view the leaderboard.
+Once the user logs in, the home page is shown.
+Whenever the user is not logged in and types something in the address bar, the user is asked to log in before the requested page is shown.
 
-* Users
-* Questions
+## Application Functionality
 
-### Users
+### Home page
 
-Users include:
+The answered and unanswered polls are both available at the root.
+The user can alternate between viewing answered and unanswered polls.
+The unanswered questions are shown by default.
+The name and the avatar of the logged in user are visible on the page.
+The user can navigate to the leaderboard.
+The user can navigate to the form that allows the user to create a new poll.
+A polling question links to details of that poll.
+Each polling question resides in the correct category.
+The polls in both categories are arranged from the most recently created (top) to the least recently created (bottom).
 
-| Attribute    | Type             | Description           |
-|-----------------|------------------|-------------------         |
-| id                 | String           | The user’s unique identifier |
-| name          | String           | The user’s first name  and last name     |
-| avatarURL  | String           | The path to the image file |
-| questions | Array | A list of ids of the polling questions this user created|
-| answers      | Object         |  The object's keys are the ids of each question this user answered. The value of each key is the answer the user selected. It can be either `'optionOne'` or `'optionTwo'` since each question has two options.
+### Question page
 
-### Questions
+The details of the poll are available at questions/:question_id
+When a poll is clicked on the home page, the following is shown:
 
-Questions include:
+- the text “Would You Rather”;
+- the picture of the user who posted the polling question; and
+- the two options.
+  For answered polls, each of the two options contains the following:
+- the text of the option;
+- the number of people who voted for that option;
+- the percentage of people who voted for that option.
 
-| Attribute | Type | Description |
-|-----------------|------------------|-------------------|
-| id                  | String | The question’s unique identifier |
-| author        | String | The author’s unique identifier |
-| timestamp | String | The time when the question was created|
-| optionOne | Object | The first voting option|
-| optionTwo | Object | The second voting option|
+The option selected by the logged in user should be clearly marked.
+When the user is logged in, the details of the poll are shown. If the user is logged out, he/she is asked to log in before before being able to access the poll.
+The application asks the user to sign in and shows a 404 page if that poll does not exist. (In other words, if a user creates a poll and then the same or another user tries to access that poll by its url, the user should be asked to sign in and then be shown a 404 page. Please keep in mind that new polls will not be accessible at their url because of the way the backend is set up in this application.)
 
-### Voting Options
+Upon voting in a poll, all of the information of the answered poll is displayed.
+The user’s response is recorded and is clearly visible on the poll details page.
+When the user comes back to the home page, the polling question appears in the “Answered” column.
+The voting mechanism works correctly, and the data on the leaderboard changes appropriately.
 
-Voting options are attached to questions. They include:
+### New question page
 
-| Attribute | Type | Description |
-|-----------------|------------------|-------------------|
-| votes             | Array | A list that contains the id of each user who voted for that option|
-| text                | String | The text of the option |
+The form is available at /add
+The application shows the text “Would You Rather” and has a form for creating two options.
+Upon submitting the form, a new poll is created and the user is taken to the home page.
+The new polling question appears in the correct category on the home page.
 
-Your code will talk to the database via 4 methods:
+### Leaderboard page
 
-* `_getUsers()`
-* `_getQuestions()`
-* `_saveQuestion(question)`
-* `_saveQuestionAnswer(object)`
+The Leaderboard is available at /leaderboard
+Each entry on the leaderboard contains the following:
+the user’s name;
+the user’s picture;
+the number of questions the user asked; and
+the number of questions the user answered; and
+the rank
 
-1) `_getUsers()` Method
+Users are ordered in descending order based on the sum of the number of questions they’ve answered and the number of questions they’ve asked.
 
-*Description*: Get all of the existing users from the database.  
-*Return Value*: Object where the key is the user’s id and the value is the user object.
+### Navigation bar
 
-2) `_getQuestions()` Method
+The app contains a responsive navigation bar that is visible on all of the pages except the login page.
 
-*Description*: Get all of the existing questions from the database.  
-*Return Value*: Object where the key is the question’s id and the value is the question object.
+The user can navigate between the page for creating new polls, and the leaderboard page, and the home page without typing the address into the address bar.
 
-3) `_saveQuestion(question)` Method
+### Backend interaction
 
-*Description*: Save the polling question in the database.  
-*Parameters*:  Object that includes the following properties: `author`, `optionOneText`, and `optionTwoText`. More details about these properties:
+The data that’s initially displayed is populated correctly from the backend.
 
-| Attribute | Type | Description |
-|-----------------|------------------|-------------------|
-| author | String | The id of the user who posted the question|
-| optionOneText| String | The text of the first option |
-| optionTwoText | String | The text of the second option |
+Each user’s answer and each new poll is correctly recorded on the backend.
 
-*Return Value*:  An object that has the following properties: `id`, `author`, `optionOne`, `optionTwo`, `timestamp`. More details about these properties:
+## Architecture
 
-| Attribute | Type | Description |
-|-----------------|------------------|-------------------|
-| id | String | The id of the question that was posted|
-| author | String | The id of the user who posted the question|
-| optionOne | Object | The object has a text property and a votes property, which stores an array of the ids of the users who voted for that option|
-| optionTwo | Object | The object has a text property and a votes property, which stores an array of the ids of the users who voted for that option|
-|timestamp|String | The time when the question was created|
+The store is the application’s source of truth.
+Components read the necessary state from the store; they do not have their own versions of the same state.
+There are no direct API calls in the components' lifecycle methods.
 
-4) `_saveQuestionAnswer(object)` Method
+Most application state is managed by the Redux store. State-based props are mapped from the store rather than stored as component state.
+Form inputs and controlled components may have some state handled by the component.
 
-*Description*: Save the answer to a particular polling question in the database.
-*Parameters*: Object that contains the following properties: `authedUser`, `qid`, and `answer`. More details about these properties:
+Updates are triggered by dispatching action creators to reducers.
+Reducers and actions are written properly and correctly return updated state to the store.
 
-| Attribute | Type | Description |
-|-----------------|------------------|-------------------|
-| authedUser | String | The id of the user who answered the question|
-| qid | String | The id of the question that was answered|
-| answer | String | The option the user selected. The value should be either `"optionOne"` or `"optionTwo"`|
-
-## Contributing
-
-This repository is the starter code for *all* Udacity students. Therefore, we most likely will not accept pull requests. For details, check out [CONTRIBUTING.md](https://github.com/udacity/reactnd-project-would-you-rather-starter/blob/master/CONTRIBUTING.md).
+The code is structured and organized in a logical way.
+Components are modular and reusable.

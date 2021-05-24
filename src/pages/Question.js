@@ -79,7 +79,7 @@ function Question() {
           />
         </div>
         <div className="poll-body">
-          <h3>Would you rather</h3>
+          <h3>Would You Rather</h3>
           {!answered ? (
             <form onSubmit={(event) => submitHandler(event)}>
               <div className="labels">

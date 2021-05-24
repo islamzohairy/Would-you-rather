@@ -21,7 +21,7 @@ function HomeQuestion({ question }) {
         <img draggable={false} src={`/images/${user.avatarURL}`} alt="" />
       </div>
       <div className="home-question-options">
-        <h3>Would you rather</h3>
+        <h3>Would You Rather</h3>
         <p>{optionOne.text}</p>
         <span>Or</span>
         <p>{optionTwo.text}</p>
